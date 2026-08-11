@@ -1,0 +1,33 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Architectures: amd64
+Codename: stable
+Components: main
+Date: Tue, 11 Aug 2026 15:27:29 +0000
+Label: orbit
+Origin: orbit
+Suite: stable
+MD5Sum:
+ f6e851824cc556902e1b39d7146b1c39              134 Release
+ 61645ca89d89521e0a85f54f77c8d195             3561 main/binary-amd64/Packages
+ 2015f73407c0f9daa8c643f25d9e7e19             1738 main/binary-amd64/Packages.gz
+SHA1:
+ a4f563ef8373dd624e69ce3830dc27cdde782fc6              134 Release
+ bbeaee6634ef6bbddf08c072baf8240b80e018e0             3561 main/binary-amd64/Packages
+ 97f503d762b95fa0dbb57839d210d67308c3ef96             1738 main/binary-amd64/Packages.gz
+SHA256:
+ 2104ff70a22b0994211745303eb6e4ffab4cd11d0bc35305308d6061f8797c45              134 Release
+ a681153ad417231e346ced61cc10f0d828420efda8fb50348818046b089cdebe             3561 main/binary-amd64/Packages
+ de5117f1646303ab4f521c9c8da54d8f8fb7b9206d0eb0956636a3611d1e4909             1738 main/binary-amd64/Packages.gz
+SHA512:
+ 0b1844af20e038d01989d6483100d2bcaa10ebdda9bbcc27e1419da322a4936c371833343f6b4362dfd39756c8fa07961abd7ca186f631d7b6898bdd45d94c24              134 Release
+ 4d9718bbc4e347b49f416135d0ba9f0e03861c326a02232c494a5bf578e7c0183ac85ea4173985b309ba0be840cc00c35d870f5fb080ef19aa4b75795418446d             3561 main/binary-amd64/Packages
+ 0476a5c5b3221f4586d874fccd40bb1d6e928c0ef0791e50a640e11411d103e15faea1de1e46e3f4848f3de3c044411afb268607303e75fe6e08a618ae477948             1738 main/binary-amd64/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQQWewIj0+sWWNnWfXgK5BtIr9OoygUCans/YQAKCRAK5BtIr9Oo
+yi1MAP48OVGTgsrRxrVuOiSbmERXKHaz/E15mAmh/cBOm4Rg4gEAkV29f6y1/455
+T/OPrJ90ijbqQ0p0vHGGga29FB/0AgQ=
+=F4e8
+-----END PGP SIGNATURE-----
