@@ -105,8 +105,10 @@ jobs:
               new_state=$(jq --arg p "$proj" --arg s "$sha" '.[$p]=$s' <<<"$new_state")
             fi
           done
-          # Merge fresh state with whatever was there before.
-          merged=$(jq -s '.[0] * .[1]' .state/last.json <<<"$new_state")
+          # Merge fresh state with whatever was there before. `jq -s` reads
+          # from file args, so write the new state to a temp file first.
+          echo "$new_state" > _state_new.json
+          merged=$(jq -s '.[0] * .[1]' .state/last.json _state_new.json)
           echo "$merged" > .state/last.json
 
       - name: Publish repository
