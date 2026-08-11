@@ -1,0 +1,128 @@
+name: rebuild-and-publish
+
+# Rebuild the orbit apt repository whenever any of the four projects push to
+# `main`, then republish to the gh-pages branch. Also runs on a schedule and
+# can be triggered manually from the Actions tab.
+
+on:
+  push:
+    branches: [main]
+  repository_dispatch:
+    types: [orbit-rebuild]
+  schedule:
+    # Keep the repo fresh even if a project forgets to trigger the build.
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+env:
+  KEY_ID: 0AE41B48AFD3A8CA
+  REPO: steven66619/orbit-apt
+  # Projects tracked for rebuilds (branch per project resolved in the job).
+  PROJECTS: optix orbiter orbit-status realspeed-cli
+
+concurrency:
+  group: apt-rebuild
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          # Also bring in the tooling from `main` (build-repo.sh) without
+          # switching branches: fetch both, then copy the script over.
+          fetch-depth: 0
+
+      - name: Fetch build tooling from main
+        run: |
+          git fetch origin main
+          git checkout origin/main -- build-repo.sh
+          chmod +x build-repo.sh
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dpkg-dev apt-utils gnupg ca-certificates curl \
+            build-essential cmake pkg-config git golang-go cargo rustc \
+            libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-util-dev \
+            libcairo2-dev libpango1.0-dev librsvg2-dev libxkbcommon-x11-dev \
+            libwayland-dev wayland-protocols liblua5.4-dev
+
+      - name: Import signing key
+        env:
+          SIGNING_KEY: ${{ secrets.ORBIT_SIGNING_KEY }}
+        run: |
+          if [ -z "$SIGNING_KEY" ]; then
+            echo "::error::ORBIT_SIGNING_KEY secret missing"
+            exit 1
+          fi
+          printf '%s' "$SIGNING_KEY" | gpg --batch --import
+
+      # Store the last-built commit of each project so rebuilds only happen
+      # when something actually changed.
+      - name: Load last-built state
+        id: state
+        run: |
+          mkdir -p .state
+          if [ -f .state/last.json ]; then
+            cat .state/last.json
+          else
+            echo "{}" > .state/last.json
+          fi
+
+      # Which branch each project tracks. orbiter historically uses `master`,
+      # the others use `main`.
+      - name: Build projects that changed
+        env:
+          BRANCHES: '{"optix":"main","orbiter":"master","orbit-status":"main","realspeed-cli":"main"}'
+        run: |
+          set -euo pipefail
+          UPSTREAM="https://github.com/steven66619"
+          mkdir -p _src _deb
+          new_state="{}"
+          for proj in $PROJECTS; do
+            branch=$(jq -r --arg p "$proj" '.[$p]' <<<"$BRANCHES")
+            sha=$(git ls-remote "$UPSTREAM/$proj.git" "refs/heads/$branch" | awk '{print $1}')
+            old=$(jq -r --arg p "$proj" '.[$p] // "none"' .state/last.json)
+            echo "=== $proj: $old -> $sha"
+            if [ "$sha" != "$old" ]; then
+              git clone --depth 1 --branch "$branch" "$UPSTREAM/$proj.git" "_src/$proj"
+              echo "::group::Building $proj"
+              (cd "_src/$proj" && debian/rules binary)
+              echo "::endgroup::"
+              # `debian/rules binary` drops the .deb in the parent of the
+              # checkout; the workflow clones into _src/<proj>, so they land
+              # in _src/.
+              cp _src/*.deb _deb/ 2>/dev/null || true
+              new_state=$(jq --arg p "$proj" --arg s "$sha" '.[$p]=$s' <<<"$new_state")
+            fi
+          done
+          # Merge fresh state with whatever was there before.
+          merged=$(jq -s '.[0] * .[1]' .state/last.json <<<"$new_state")
+          echo "$merged" > .state/last.json
+
+      - name: Publish repository
+        run: |
+          set -euo pipefail
+          if ls _deb/*.deb 1>/dev/null 2>&1; then
+            ./build-repo.sh _deb/*.deb
+          else
+            echo "No packages changed; skipping publish."
+          fi
+
+      - name: Commit and push
+        run: |
+          set -euo pipefail
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git -c user.name="orbit-bot" \
+             -c user.email="steven4x4@gmail.com" \
+             commit -m "apt: rebuild packages from upstream [$(date -u +%F\ %T)]"
+          git push origin gh-pages
