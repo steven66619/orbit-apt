@@ -6,11 +6,11 @@ Section: x11
 Maintainer: Steven Atkinson <steven4x4@gmail.com>
 Depends: libc6, fontconfig
 Filename: pool/main/optix/optix_0.1.0-1_amd64.deb
-Size: 4398044
-MD5sum: b1b71f45cfc9d7171bb066acd4f16658
-SHA1: af50f319411e3a0dfe80deb71c9cae323b468364
-SHA256: 1addafaf92b821162df034d2c3d139cd8cbbaec0ad47e632a0ecb9d7b654b79b
-SHA512: c557e64401386e1301f47c65b96c5667897d930c60fa46218643218d4f36a782d01039836f3e293e5abd3d50bc99e094e671c0f34042e9d90e65902d05a4a4a2
+Size: 4775718
+MD5sum: 81a9c1d9d62c598dc8e08683bb980f54
+SHA1: 46b40a0056527e294110daa46d2af6f1cc52612a
+SHA256: 7863c1dd06f306eaa6f72afb8892156762e9ae99c39f9ae00db1e4ba0131f4d7
+SHA512: c7daf76fe91e354085f884330803725569132568ca17c2cd4bddd7f40681a4d4ef5ab490e08403cd64e4dc522833c10d98ae8bd97f55397265c2881d921db9bc
 Homepage: https://github.com/steven66619/optix
 Description: GPU-accelerated terminal emulator
  A GPU-accelerated terminal emulator written in Rust. Uses wgpu for
@@ -28,11 +28,11 @@ Depends: libcairo2, libpango-1.0-0, libpangocairo-1.0-0,
  libwayland-client0, libglib2.0-0, libharfbuzz0b,
  libpixman-1-0, libpng16-16, liblua5.4-0
 Filename: pool/main/orbit-status/orbit-status_1.2-1_amd64.deb
-Size: 26404
-MD5sum: e75824fadab92945780b7f465d6e39ed
-SHA1: ae59940fbf1211fc5057e8d850971a3c9720e059
-SHA256: c98cb88dbcf7ee005b4644c5003b3d962922f2d97ab0e14b6b6d860e9209c2b1
-SHA512: 3f936c6100372f49f0e9ef4d4d3bb63d869f34fe5fdd53b4e9c85557fb68fa6a4dfaf9ffb67cf8d7558ce3e768c8d0171e8c833b118e8991e048aa2b9211452f
+Size: 29084
+MD5sum: 8e33163f10f88a10e742217ee05977c3
+SHA1: 452f48cddd0fd857409ca913aaa77baf9b5f865e
+SHA256: 32a6c3eac3086c346de06ecc9c5c32d6f29d410335c4c1e93499ff281f1bd371
+SHA512: 52d385f674923ef2418539a534b66e087e06a8f01cb3ef8c2d59811e7354cd477dcdc9a3689ca17736a4cfe1985eb0ecbb49791a17aa9ac4738421e79e0196a3
 Homepage: https://github.com/steven66619/orbit-status-new
 Description: Lightweight Wayland status bar with Lua plugin support
  A lightweight status bar for Hyprland, Sway, and other wlr-layer-shell
@@ -49,11 +49,11 @@ Maintainer: Steven Atkinson <steven4x4@gmail.com>
 Depends: libcairo2, libpango-1.0-0, librsvg2-2, libxcb-icccm4,
  libxcb-keysyms1, libxcb-aux0, libxkbcommon-x11-0
 Filename: pool/main/orbiter/orbiter_1.0.3-1_amd64.deb
-Size: 108664
-MD5sum: 70f180358bc29d54073953a667828205
-SHA1: 0e50dc1ae3bbd9677dcf837c00135a6801dec2e1
-SHA256: 2817505c9f30fc67478470c0b7a22c0c45e2aeb097d9c666dc1a48f0eb55019c
-SHA512: 1d07eb4dc93e5023031b842df1b57909206071a9967bc50ed083402bd09feb64b8af7ce412392609d479f60169a1e1324ef2e5d6f92337008bb63be16a0bda65
+Size: 119538
+MD5sum: 0a38ca74425fab52e9a3851bb5ecff8f
+SHA1: b595122f19057d3c490ac79b818646afaf0262aa
+SHA256: 4e17b0a800edeab3d8db4293f682db27241a1ff25a379e8f02e83d9b4cab7a8a
+SHA512: b4072343f3a7c6ac4b7c6dea6ec191662095abfc10b8bb644dc4046c31da01810082d147de84f5f83afce5a4a881ac8ed53c1d7998f67988d22b434c72b7a7d4
 Homepage: https://github.com/steven66619/orbiter
 Description: Application launcher with system icons
  A lightweight X11 application launcher with system icon support,
@@ -66,11 +66,11 @@ Priority: optional
 Section: net
 Maintainer: Steven Atkinson <steven4x4@gmail.com>
 Filename: pool/main/realspeed-cli/realspeed-cli_1.0.0-1_amd64.deb
-Size: 1983200
-MD5sum: dfaa50227b073508ad3b72cffa1b19dc
-SHA1: 0af853f348621b0dc76a07580437229de4b1f437
-SHA256: 32e5f28b2575f4189aa1a9e2688f0e653411d9749c8a8db70715dc73188ead8a
-SHA512: ba71af7505cffa5f20a4fe0730736f2873f413020264263aa9613d0c79c02aa4d808a3a22116e616f31b8609be635074a295bde1dcef775d13e7030c2f1c3fda
+Size: 1926512
+MD5sum: 8ccb343d0c974c37ac60d50d6e30ee45
+SHA1: cff2ab6b444a6fedb6a3df8cb4112360d8dfd92b
+SHA256: ab8a7ea9e1a255434e116368c3ae3d0a5b3871845de882134f24a7bac5f74dfc
+SHA512: f9bc0b2ff876c0d1de092f37b80417ba5ab5ec8e44cf345a6e3e0b297de6fc0763692ecff3ebb07293a03cccff0e229db4b974ff5b9bf7f195b9e3b4279aa627
 Homepage: https://github.com/steven66619/realspeed-cli
 Description: Command-line internet speed test using SamKnows infrastructure
  Unofficial speed test CLI using the SamKnows infrastructure that Virgin
