@@ -30,6 +30,21 @@ sudo apt install optix orbiter orbit-status realspeed-cli
 
 ## Updating the repository
 
+The repository is **automated** via GitHub Actions (`.github/workflows/rebuild.yml`):
+
+- The hourly schedule and any manual `workflow_dispatch` run compare each
+  upstream project's `HEAD` against `.state/last.json` (kept on `gh-pages`).
+- Projects that changed are cloned, built via `debian/rules binary`, and the
+  new `.deb`s are merged into the pool with `./build-repo.sh`.
+- Only new/updated packages are published; unchanged projects are skipped.
+
+To update manually instead:
+
 1. Build new `.deb` files in the source projects (`debian/rules binary`).
 2. Run `./build-repo.sh <path/to/*.deb>...` from this repo's root.
 3. Commit and push to `gh-pages` (Pages must be enabled on this repo, branch `gh-pages`).
+
+### Required secret
+
+`ORBIT_SIGNING_KEY` — the armored private signing key for
+`0AE41B48AFD3A8CA`, set under **Settings → Secrets and variables → Actions**.
