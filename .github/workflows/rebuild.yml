@@ -39,9 +39,12 @@ jobs:
 
       - name: Fetch build tooling from main
         run: |
+          # Extract build-repo.sh from `main` without staging it into the
+          # gh-pages working tree (so the publish commit stays clean).
           git fetch origin main
-          git checkout origin/main -- build-repo.sh
-          chmod +x build-repo.sh
+          mkdir -p _tooling
+          git show origin/main:build-repo.sh > _tooling/build-repo.sh
+          chmod +x _tooling/build-repo.sh
 
       - name: Install build dependencies
         run: |
@@ -50,7 +53,8 @@ jobs:
             build-essential cmake pkg-config git golang-go cargo rustc \
             libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-util-dev \
             libcairo2-dev libpango1.0-dev librsvg2-dev libxkbcommon-x11-dev \
-            libwayland-dev wayland-protocols liblua5.4-dev
+            libwayland-dev wayland-protocols liblua5.4-dev \
+            libfontconfig-dev libfreetype-dev
 
       - name: Import signing key
         env:
@@ -109,7 +113,7 @@ jobs:
         run: |
           set -euo pipefail
           if ls _deb/*.deb 1>/dev/null 2>&1; then
-            ./build-repo.sh _deb/*.deb
+            ./_tooling/build-repo.sh _deb/*.deb
           else
             echo "No packages changed; skipping publish."
           fi
@@ -117,7 +121,9 @@ jobs:
       - name: Commit and push
         run: |
           set -euo pipefail
-          git add -A
+          # Stage only the apt repo content (pool, dists, keyring, state);
+          # never the _src/_deb/_tooling scratch dirs.
+          git add dists pool orbit-archive-keyring.asc .state
           if git diff --cached --quiet; then
             echo "Nothing to commit."
             exit 0
