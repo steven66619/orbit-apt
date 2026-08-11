@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
-# Build the orbit apt repository layout.
+# Build (or update) the orbit apt repository layout.
 #
-# Produces, in the current directory:
-#   pool/main/{optix,orbiter,realspeed-cli,orbit-status}/*.deb
+# Layout produced/updated in the current directory:
+#   pool/main/{pkg}/*.deb            — newest version kept per package
 #   dists/stable/main/binary-amd64/{Packages,Packages.gz}
 #   dists/stable/Release + InRelease (signed)
 #
-# Push the resulting tree to the `gh-pages` branch of the orbit-apt repo to
-# serve it over HTTPS (the `InRelease` signature makes `[trusted=yes]` optional).
+# Run from a checkout of the `gh-pages` branch so existing packages are kept;
+# new .debs passed as arguments are added and old versions pruned. Re-run the
+# script with fresh .debs to publish updates.
+#
+# The `InRelease` signature makes `[trusted=yes]` unnecessary for users.
 set -euo pipefail
 
 SUITE=stable
@@ -17,9 +20,9 @@ KEY=0AE41B48AFD3A8CA
 POOL=pool/main
 DISTS=dists/$SUITE/$DIST/binary-$ARCH
 
-rm -rf pool dists
 mkdir -p "$POOL" "$DISTS"
 
+# Add (or replace) the .debs handed to us.
 for deb in "$@"; do
     [ -f "$deb" ] || { echo "missing: $deb" >&2; exit 1; }
     pkg=$(dpkg-deb -f "$deb" Package)
@@ -29,11 +32,29 @@ for deb in "$@"; do
     cp "$deb" "$POOL/$pkg/${pkg}_${ver}_${arch}.deb"
 done
 
+# Prune old versions: keep only the newest .deb per package.
+for dir in "$POOL"/*; do
+    [ -d "$dir" ] || continue
+    newest=""
+    for f in "$dir"/*.deb; do
+        [ -f "$f" ] || continue
+        if [ -z "$newest" ]; then
+            newest="$f"
+        elif dpkg --compare-versions "$(dpkg-deb -f "$f" Version)" gt "$(dpkg-deb -f "$newest" Version)"; then
+            newest="$f"
+        fi
+    done
+    [ -n "$newest" ] || continue
+    for f in "$dir"/*.deb; do
+        [ "$f" != "$newest" ] && rm -f "$f"
+    done
+done
+
 # Index: Packages + Packages.gz for the archive.
 apt-ftparchive packages "$POOL" > "$DISTS/Packages"
 gzip -9 -kf "$DISTS/Packages"
 
-# Release file with hashes, then a detached signature for InRelease.
+# Release file with hashes, then signatures for InRelease.
 apt-ftparchive release -o APT::FTPArchive::Release::Origin=orbit \
     -o APT::FTPArchive::Release::Label=orbit \
     -o APT::FTPArchive::Release::Suite=$SUITE \
@@ -51,5 +72,5 @@ gpg --batch --yes --clearsign --digest-algo SHA512 \
 # Export the public key for users to install into their keyring.
 gpg --batch --yes --armor --export "$KEY" > orbit-archive-keyring.asc
 
-echo "Repo built:"
+echo "Repo updated:"
 find pool dists -type f | sort
