@@ -106,7 +106,9 @@ jobs:
             if [ "$sha" != "$old" ]; then
               git clone --depth 1 --branch "$branch" "$UPSTREAM/$proj.git" "_src/$proj"
               echo "::group::Building $proj"
-              (cd "_src/$proj" && debian/rules binary)
+              # `dh_testroot` requires root or fakeroot; the runner is not
+              # root, so wrap the build in fakeroot (preinstalled on the image).
+              (cd "_src/$proj" && fakeroot debian/rules binary)
               echo "::endgroup::"
               # `debian/rules binary` drops the .deb in the parent of the
               # checkout; the workflow clones into _src/<proj>, so they land
