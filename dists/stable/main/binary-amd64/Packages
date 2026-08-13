@@ -6,11 +6,11 @@ Section: x11
 Maintainer: Steven Atkinson <steven4x4@gmail.com>
 Depends: libc6, fontconfig
 Filename: pool/main/optix/optix_0.1.0-1_amd64.deb
-Size: 4770196
-MD5sum: ac93b2d72dabd03350e782dcbc209732
-SHA1: 2c0f61c42e283740ea40911e0bc615816fdb943c
-SHA256: 050bafaec53b116a757599426fd1d0a9a35fc75360952ea2ab3cdaac1f1b0d35
-SHA512: f5eed73ad397ce46ee0b61010e21addf3bd5727d3da5984db1d960e0447e4ba8fefff2fa5d7943d30cce185573f6cb22ce6d1f3a670cd07ff2b1e2809ffa3e75
+Size: 4777146
+MD5sum: 8f32f921fce66c0c1f5b5b780d9e4547
+SHA1: 83d71038b6b4eb3dd57a52de3128b27ec7a27b04
+SHA256: a53059b999fd3abcffd5c5c98f9711253c6ae6b34f664f4f87e9d12b083204dc
+SHA512: 3fd8ebc33b0975dfb76f2545bb95ad0e31bca380f622302e27807f1f48fed4534e1c402f9256cc0769eab5bd8957c74c976b352bf2a72944c124ca5506cf0b11
 Homepage: https://github.com/steven66619/optix
 Description: GPU-accelerated terminal emulator
  A GPU-accelerated terminal emulator written in Rust. Uses wgpu for
