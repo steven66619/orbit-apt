@@ -6,11 +6,11 @@ Section: x11
 Maintainer: Steven Atkinson <steven4x4@gmail.com>
 Depends: libc6, fontconfig
 Filename: pool/main/optix/optix_0.1.0-1_amd64.deb
-Size: 4775718
-MD5sum: 81a9c1d9d62c598dc8e08683bb980f54
-SHA1: 46b40a0056527e294110daa46d2af6f1cc52612a
-SHA256: 7863c1dd06f306eaa6f72afb8892156762e9ae99c39f9ae00db1e4ba0131f4d7
-SHA512: c7daf76fe91e354085f884330803725569132568ca17c2cd4bddd7f40681a4d4ef5ab490e08403cd64e4dc522833c10d98ae8bd97f55397265c2881d921db9bc
+Size: 4770196
+MD5sum: ac93b2d72dabd03350e782dcbc209732
+SHA1: 2c0f61c42e283740ea40911e0bc615816fdb943c
+SHA256: 050bafaec53b116a757599426fd1d0a9a35fc75360952ea2ab3cdaac1f1b0d35
+SHA512: f5eed73ad397ce46ee0b61010e21addf3bd5727d3da5984db1d960e0447e4ba8fefff2fa5d7943d30cce185573f6cb22ce6d1f3a670cd07ff2b1e2809ffa3e75
 Homepage: https://github.com/steven66619/optix
 Description: GPU-accelerated terminal emulator
  A GPU-accelerated terminal emulator written in Rust. Uses wgpu for
@@ -46,15 +46,15 @@ Version: 0.17.1
 Priority: optional
 Section: admin
 Maintainer: Volian Developers <volian-devel@volian.org>
-Installed-Size: 11589
-Depends: libapt-pkg7.0 (>= 2.7.11), libc6 (>= 2.39), libgcc-s1 (>= 4.2), liblzma5 (>= 5.4.0), libstdc++6 (>= 14), apt
+Installed-Size: 11344
+Depends: libapt-pkg6.0t64 (>= 2.8.3), libc6 (>= 2.39), libgcc-s1 (>= 4.2), libstdc++6 (>= 11), apt
 Suggests: aria2
 Filename: pool/main/orbit/orbit_0.17.1_amd64.deb
-Size: 3605944
-MD5sum: 110a8263ee9f02a7b8007e269f22678b
-SHA1: 8c041572b6c0f3fd92bcc18e6b04df613afaafd6
-SHA256: 9d4f23401f2d4110d1f9517d38a131762afe9bbe8165d6cbd832362bc69e208a
-SHA512: 91b56475a9cbd92170754cb3cc9ed1ed9a23ab4b6d417304a45134a35287815d41dfca486a73099b96a4e0c5f96f3fd7b1957de541058791398faf4457603151
+Size: 3863352
+MD5sum: 2438fe162f89df1d40781fbd20490e1e
+SHA1: 27d4a7c1be2821594b8e55499fe16acdd3e85716
+SHA256: 246d2293c5cefb3674cb6780e110cdfdfd5031f52d9d260c29aa620e304f4763
+SHA512: a80c1d4943e12a3d17ccefc95b6e976f788c6a4143abee625200b2ae888b01391c83865f49c236b9a59eeffda88b7258eca47ca1bb96f95cbcb41ef0d989aac8
 Homepage: https://github.com/steven66619/orbit
 Description: Commandline frontend for the APT package manager
  Orbit is a frontend for the APT package manager. It keeps APT's package
