@@ -50,11 +50,21 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y dpkg-dev apt-utils gnupg ca-certificates curl \
-            build-essential cmake pkg-config git golang-go cargo rustc \
+            build-essential cmake pkg-config git golang-go \
+            debhelper libapt-pkg-dev libssl-dev bash-completion \
             libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-util-dev \
             libcairo2-dev libpango1.0-dev librsvg2-dev libxkbcommon-x11-dev \
             libwayland-dev wayland-protocols \
             libfontconfig-dev libfreetype-dev libxcomposite-dev liblua5.4-dev
+
+      # The runner image already ships rustup + a recent stable rustc
+      # (>= 1.95, which orbit requires). Installing `cargo rustc` from the
+      # Ubuntu repos would pull in an older 1.85 toolchain, so we rely on
+      # rustup and just make sure the default toolchain is current.
+      - name: Ensure Rust toolchain
+        run: |
+          rustup default stable
+          rustc --version
 
       - name: Import signing key
         env:
