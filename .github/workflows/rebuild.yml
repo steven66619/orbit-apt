@@ -1,6 +1,6 @@
 name: rebuild-and-publish
 
-# Rebuild the orbit apt repository whenever any of the four projects push to
+# Rebuild the orbit apt repository whenever any of the five projects push to
 # `main`, then republish to the gh-pages branch. Also runs on a schedule and
 # can be triggered manually from the Actions tab.
 
@@ -18,7 +18,7 @@ env:
   KEY_ID: 0AE41B48AFD3A8CA
   REPO: steven66619/orbit-apt
   # Projects tracked for rebuilds (branch per project resolved in the job).
-  PROJECTS: optix orbiter orbit-status realspeed-cli
+  PROJECTS: optix orbiter orbit orbit-status realspeed-cli
 
 concurrency:
   group: apt-rebuild
@@ -82,7 +82,7 @@ jobs:
       # the others use `main`.
       - name: Build projects that changed
         env:
-          BRANCHES: '{"optix":"main","orbiter":"master","orbit-status":"main","realspeed-cli":"main"}'
+          BRANCHES: '{"optix":"main","orbiter":"master","orbit":"main","orbit-status":"main","realspeed-cli":"main"}'
         run: |
           set -euo pipefail
           UPSTREAM="https://github.com/steven66619"
