@@ -40,6 +40,27 @@ Description: Lightweight Wayland status bar with Lua plugin support
  network, battery, and updates, plus workspace switching and power
  options with confirmation popup.
 
+Package: orbit
+Architecture: amd64
+Version: 0.17.1
+Priority: optional
+Section: admin
+Maintainer: Volian Developers <volian-devel@volian.org>
+Installed-Size: 11589
+Depends: libapt-pkg7.0 (>= 2.7.11), libc6 (>= 2.39), libgcc-s1 (>= 4.2), liblzma5 (>= 5.4.0), libstdc++6 (>= 14), apt
+Suggests: aria2
+Filename: pool/main/orbit/orbit_0.17.1_amd64.deb
+Size: 3605944
+MD5sum: 110a8263ee9f02a7b8007e269f22678b
+SHA1: 8c041572b6c0f3fd92bcc18e6b04df613afaafd6
+SHA256: 9d4f23401f2d4110d1f9517d38a131762afe9bbe8165d6cbd832362bc69e208a
+SHA512: 91b56475a9cbd92170754cb3cc9ed1ed9a23ab4b6d417304a45134a35287815d41dfca486a73099b96a4e0c5f96f3fd7b1957de541058791398faf4457603151
+Homepage: https://github.com/steven66619/orbit
+Description: Commandline frontend for the APT package manager
+ Orbit is a frontend for the APT package manager. It keeps APT's package
+ semantics while presenting package operations in a clearer, more inspectable
+ format before changes are committed.
+
 Package: orbiter
 Architecture: amd64
 Version: 1.0.3-1

@@ -6,6 +6,7 @@ A personal apt repository hosting the orbit suite of tools:
 |---|---|---|
 | `optix` | GPU-accelerated terminal emulator (wgpu, split panes, kitty graphics) | 0.1.0-1 |
 | `orbiter` | X11 application launcher with system icons | 1.0.3-1 |
+| `orbit` | Commandline frontend for the APT package manager | 0.17.1 |
 | `orbit-status` | Wayland status bar with Lua plugins (Hyprland/Sway) | 1.2-1 |
 | `realspeed-cli` | SamKnows-based internet speed test CLI | 1.0.0-1 |
 
@@ -25,7 +26,7 @@ echo "deb [signed-by=/etc/apt/keyrings/orbit-archive-keyring.gpg] https://steven
 
 # 3. Update and install
 sudo apt update
-sudo apt install optix orbiter orbit-status realspeed-cli
+sudo apt install optix orbiter orbit orbit-status realspeed-cli
 ```
 
 ## Updating the repository
