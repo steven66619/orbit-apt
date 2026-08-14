@@ -63,18 +63,18 @@ Description: Commandline frontend for the APT package manager
 
 Package: orbiter
 Architecture: amd64
-Version: 1.0.3-1
+Version: 1.0.3-2
 Priority: optional
 Section: x11
 Maintainer: Steven Atkinson <steven4x4@gmail.com>
 Depends: libcairo2, libpango-1.0-0, librsvg2-2, libxcb-icccm4,
- libxcb-keysyms1, libxcb-aux0, libxkbcommon-x11-0
-Filename: pool/main/orbiter/orbiter_1.0.3-1_amd64.deb
-Size: 119538
-MD5sum: 0a38ca74425fab52e9a3851bb5ecff8f
-SHA1: b595122f19057d3c490ac79b818646afaf0262aa
-SHA256: 4e17b0a800edeab3d8db4293f682db27241a1ff25a379e8f02e83d9b4cab7a8a
-SHA512: b4072343f3a7c6ac4b7c6dea6ec191662095abfc10b8bb644dc4046c31da01810082d147de84f5f83afce5a4a881ac8ed53c1d7998f67988d22b434c72b7a7d4
+ libxcb-keysyms1, libxcb-util1, libxkbcommon-x11-0
+Filename: pool/main/orbiter/orbiter_1.0.3-2_amd64.deb
+Size: 120032
+MD5sum: f4e8132de6a4f28099c5d42e01f8db13
+SHA1: e00c3dd9841cd6c3ac90abdcbaea3ceb46e52085
+SHA256: d89145fd3aac9f008a2b89ae6e786cebd48ede4a578e1bfac8b053deff54a0fc
+SHA512: 91bb854e5398fee210b078834bbc4b51de9319f96826ecb3aae08625f3a22455a2888f1d14145bc6f43b78160507a1ab994e14cd3f9d0f0eaf73ed4d13eddc22
 Homepage: https://github.com/steven66619/orbiter
 Description: Application launcher with system icons
  A lightweight X11 application launcher with system icon support,
