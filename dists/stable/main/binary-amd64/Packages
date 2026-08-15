@@ -1,16 +1,16 @@
 Package: optix
 Architecture: amd64
-Version: 0.1.0-1
+Version: 0.1.0-2
 Priority: optional
 Section: x11
 Maintainer: Steven Atkinson <steven4x4@gmail.com>
 Depends: libc6, fontconfig
-Filename: pool/main/optix/optix_0.1.0-1_amd64.deb
-Size: 4777146
-MD5sum: 8f32f921fce66c0c1f5b5b780d9e4547
-SHA1: 83d71038b6b4eb3dd57a52de3128b27ec7a27b04
-SHA256: a53059b999fd3abcffd5c5c98f9711253c6ae6b34f664f4f87e9d12b083204dc
-SHA512: 3fd8ebc33b0975dfb76f2545bb95ad0e31bca380f622302e27807f1f48fed4534e1c402f9256cc0769eab5bd8957c74c976b352bf2a72944c124ca5506cf0b11
+Filename: pool/main/optix/optix_0.1.0-2_amd64.deb
+Size: 4886172
+MD5sum: 22f9dc8f738fca17f580bc0947954206
+SHA1: 73b9b9c1d2cffe7dc60114e8471121e127e7e761
+SHA256: 19350ba0b6eacd423cae54a36e68ed98921210f79e23052ca9ba2ead59d29545
+SHA512: d94c1db49d0173879b2ff9a344557dae23c63047fd220ce782c3b763e19a869501b2db7e8786c8d81cbda0bc1ab79bf8c984a371e43669496f5dfb60fe5940dc
 Homepage: https://github.com/steven66619/optix
 Description: GPU-accelerated terminal emulator
  A GPU-accelerated terminal emulator written in Rust. Uses wgpu for
