@@ -70,11 +70,11 @@ Maintainer: Steven Atkinson <steven4x4@gmail.com>
 Depends: libcairo2, libpango-1.0-0, librsvg2-2, libxcb-icccm4,
  libxcb-keysyms1, libxcb-util1, libxkbcommon-x11-0
 Filename: pool/main/orbiter/orbiter_1.0.3-2_amd64.deb
-Size: 120032
-MD5sum: 26944363df4f96a26b34ffe778c6770c
-SHA1: c398bf46e9957660bc5f58b67d21e0e81a984dea
-SHA256: fa1a0fad751d5a515d2502ded87c4b978c968e13ac4208c31ab04a9797815a41
-SHA512: 220c27abf36d8b044779233e21541fc0dad9bb4019b26face18bd7c89fa986363daccb782a7f300fb95af62f11dedbd73090476ca8d3a2e4aee45bb5e25d9e82
+Size: 120098
+MD5sum: a1fd03ac582de6403b355d8a2741a6bb
+SHA1: 899ba2007b4ae7cd1e18cd0448aff6efc1582c03
+SHA256: c87975411f56b5d4f902e3701160ba4b35eec878f152a003dee1487b653c4180
+SHA512: f469c46e37b21e6632cd5cccc32dda0ec6f21df010510a79702c7a60ffec6038d3a147a71cb823951eb70b105d734cf2a92c1530872969501b4cf6d1db4ee5e6
 Homepage: https://github.com/steven66619/orbiter
 Description: Application launcher with system icons
  A lightweight X11 application launcher with system icon support,
